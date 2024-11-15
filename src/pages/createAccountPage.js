@@ -43,7 +43,7 @@ const CreateAccountPage = ({ setRefresh }) => {
         }
     })
     .then(response => {
-      console.log('creating successful, going to home');
+      //console.log('creating successful, going to home');
       setRefresh(refresh => refresh + 1);
       navigate('/');  //回首頁
     })

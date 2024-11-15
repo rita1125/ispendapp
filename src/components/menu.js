@@ -17,15 +17,14 @@ function Header({ langGetChange }) {
     //多語系
     const { t } = useTranslation(); 
 
-    // ref for menu container
     const menuRef = useRef(null);
 
     const changeButton = (languag) => {
         if (languag) langGetChange(languag);
-        setIsMenuOpen(false); // Hide menu after selection
+        setIsMenuOpen(false); 
     };
 
-    // Close menu when clicking outside
+    //點外側會關選單
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -79,7 +78,7 @@ function Header({ langGetChange }) {
                     </div>
                 </Link>
                 <div onClick={() => changeButton('en')} className="w-[150px] px-4 py-2 bg-cyan-600 text-white rounded-md hover:bg-cyan-500 focus:ring-cyan-600">English</div>
-                <div onClick={() => changeButton('zh')} className="w-[150px] px-4 py-2 bg-cyan-600 text-white rounded-md hover:bg-cyan-500 focus:ring-cyan-600">中文</div>
+                <div onClick={() => changeButton('tw')} className="w-[150px] px-4 py-2 bg-cyan-600 text-white rounded-md hover:bg-cyan-500 focus:ring-cyan-600">中文</div>
             </div>
         </>
     );

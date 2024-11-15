@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 /* 定義實用工具類，單一功能的樣式類別，類似於 Tailwind 本身的工具類（如 text-center, bg-blue-500) */
-@layer utilities {  
+/* @layer utilities {  
   .btn-add {
     background-color: #cc5724;
   }
-}
+} */
 
 /* 定義全局基礎樣式，這些會用於所有元素 */
 /* @apply 它允許你在自定義樣式中使用 Tailwind 的工具類 */
@@ -17,7 +17,7 @@
   }
 } */
 
-/* 定義可以重複用的組件樣式，如按鈕、卡片等。這些樣式通常較複雜，並且會在應用中重複使用。 */
+/* 定義可以重複用的組件樣式，如按鈕、卡片。這些樣式較複雜，並會重複使用。 */
 /* @layer components {
   .btn {
     @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;

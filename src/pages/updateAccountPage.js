@@ -73,7 +73,7 @@ const UpdateAccountPage = ({ setRefresh }) => {
       }
     })
     .then(response => {
-      console.log('Updating successful, going to home');
+      //console.log('Updating successful, going to home');
       setRefresh(refresh => refresh + 1);
       navigate('/');
     })
@@ -163,7 +163,7 @@ const UpdateAccountPage = ({ setRefresh }) => {
           </div>
           <div>
             <button
-              className="w-full rounded-md bg-amber-600 py-2 px-4 text-white hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-600"
+              className="w-full rounded-md bg-gray-500 py-2 px-4 text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400"
               type="submit"
             >
               {t('送出資料')}
