@@ -36,7 +36,7 @@ const Home = ({ accounts, totalCost, deleteAccount, setAccounts, setTotalCost, s
                                 return getMonth && getType;
                             });
                             //console.log(selectAccounts);
-    
+
     //月份&類型改變，重設當前頁碼為 0，0當第1頁
     useEffect(() => {
         setNowPage(0);  
@@ -101,8 +101,8 @@ const Home = ({ accounts, totalCost, deleteAccount, setAccounts, setTotalCost, s
         if (accountIdDelete) {
             deleteAccount(accountIdDelete, setAccounts, setTotalCost, accounts, setRefresh);
             
-            //如果當前頁面無資料 & 頁碼超過總頁數，就前往上一頁
-            if(newAccounts.length === 0 && nowPage > 0){
+            //如果當前頁面只剩下最後一個消費項目，且頁碼超過總頁數，將回上一頁
+            if(newAccounts.length === 1 && nowPage > 0){
                 setNowPage(nowPage - 1);
             }
 
@@ -143,11 +143,16 @@ const Home = ({ accounts, totalCost, deleteAccount, setAccounts, setTotalCost, s
                         className="block w-[135px] rounded-md  border-gray-300 shadow-sm focus:border-sky-800 focus:outline focus:outline-5 focus:outline-sky-100 sm:text-sm"
                 >
                     <option value="">{t('所有類型')}</option>
-                    {[...new Set(accounts.map(account => account.type))].map(type => (
+                    {/* {[...new Set(accounts.map(account => account.type))].map(type => (
                         <option key={type} value={type} className="hover:bg-blue-700 focus:bg-blue-700 ">
                             {t(type)}
                         </option>
-                    ))}
+                    ))} */}
+                    <option value={t('美食')}>{t('美食')}</option>
+                    <option value={t('生活用品')}>{t('生活用品')}</option>
+                    <option value={t('房租')}>{t('房租')}</option>
+                    <option value={t('交通')}>{t('交通')}</option>
+                    <option value={t('娛樂')}>{t('娛樂')}</option>
                 </select>
             </div>
 
