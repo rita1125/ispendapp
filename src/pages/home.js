@@ -99,8 +99,14 @@ const Home = ({ accounts, totalCost, deleteAccount, setAccounts, setTotalCost, s
     }
     const confirmDelete = () => {  //確定要刪除
         if (accountIdDelete) {
-          deleteAccount(accountIdDelete, setAccounts, setTotalCost, accounts, setRefresh);
-          setOpenDialog(false);   
+            deleteAccount(accountIdDelete, setAccounts, setTotalCost, accounts, setRefresh);
+            
+            //如果當前頁面無資料 & 頁碼超過總頁數，就前往上一頁
+            if(newAccounts.length === 0 && nowPage > 0){
+                setNowPage(nowPage - 1);
+            }
+
+            setOpenDialog(false);   
         }
       };
     const closeDialog = () => {  //取消刪除
