@@ -36,18 +36,30 @@ const CreateAccountPage = ({ setRefresh }) => {
       return;
     }
 
-    //axios.post('http://localhost:5001/accounts/create', { title, type, cost, date },{
-    axios.post(`${apiUrl}/accounts/create`, { title, type, cost, date },{
-        headers: {
-          'Content-Type': 'application/json',
-        }
-    })
-    .then(response => {
-      //console.log('creating successful, going to home');
-      setRefresh(refresh => refresh + 1);
-      navigate('/');  //回首頁
-    })
-    .catch(error => console.error('error!create! ', error));
+    //節流機制
+    let now = Date.now();
+    const timer = localStorage.getItem('timer') || 0;
+    if (now - timer >= 1000) {
+      //console.log(`現在: ${now}, 上次: ${timer}`);
+      localStorage.setItem('timer', now);
+    
+       //axios.post('http://localhost:5001/accounts/create', { title, type, cost, date },{
+        axios.post(`${apiUrl}/accounts/create`, { title, type, cost, date },{
+          headers: {
+            'Content-Type': 'application/json',
+          }
+      })
+      .then(response => {
+        //console.log('creating successful, going to home');
+        setRefresh(refresh => refresh + 1);
+        navigate('/');  //回首頁
+        setTimeout(()=>{
+          localStorage.removeItem('timer');
+        },2000);
+      })
+      .catch(error => console.error('error!create! ', error));
+      }
+  
   };
 
   return (
